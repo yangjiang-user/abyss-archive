@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生物对比 - 深渊档案</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🌊 <span>深渊档案</span></a>
+            <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="browse.html">分类浏览</a></li>
+                <li><a href="explore.html">深度探索</a></li>
+                <li><a href="compare.html" class="active">生物对比</a></li>
+                <li><a href="timeline.html">探索时间线</a></li>
+                <li><a href="favorites.html">我的收藏</a></li>
+                <li style="display:flex;align-items:center;gap:12px;" id="navAuth"></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <h1 class="section-title">⚖️ 生物对比</h1>
+        <p style="color:var(--text-secondary);margin-bottom:20px;">选择两种深海生物，对比它们的深度、体型、发现年份等各项指标。</p>
+
+        <!-- 选择器 -->
+        <div class="compare-selectors">
+            <select class="filter-select compare-select" id="creature1" onchange="updateCompare()">
+                <option value="">选择生物 A</option>
+            </select>
+            <div class="compare-vs">VS</div>
+            <select class="filter-select compare-select" id="creature2" onchange="updateCompare()">
+                <option value="">选择生物 B</option>
+            </select>
+        </div>
+
+        <!-- 对比结果 -->
+        <div id="compareResult">
+            <div class="empty-state">
+                <div class="icon">🔬</div>
+                <p>请选择两种生物进行对比</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>🌊 深渊档案 - 深海生物图鉴</p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/compare.js"></script>
+</body>
+</html>

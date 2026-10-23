@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册 - 深渊档案</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🌊 <span>深渊档案</span></a>
+            <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="browse.html">分类浏览</a></li>
+                <li><a href="explore.html">深度探索</a></li>
+                <li><a href="compare.html">生物对比</a></li>
+                <li><a href="timeline.html">探索时间线</a></li>
+                <li><a href="favorites.html">我的收藏</a></li>
+                <li style="display:flex;align-items:center;gap:12px;" id="navAuth"></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <h2>📝 用户注册</h2>
+        <div class="error-msg" id="errorMsg"></div>
+        <div class="success-msg" id="successMsg"></div>
+        <form id="registerForm" onsubmit="return doRegister(event)">
+            <div class="form-group">
+                <label>用户名</label>
+                <input type="text" id="username" placeholder="3-20个字符" required minlength="3" maxlength="20">
+            </div>
+            <div class="form-group">
+                <label>密码</label>
+                <input type="password" id="password" placeholder="至少6位" required minlength="6">
+            </div>
+            <div class="form-group">
+                <label>确认密码</label>
+                <input type="password" id="confirmPassword" placeholder="再次输入密码" required minlength="6">
+            </div>
+            <button type="submit" class="btn-primary">注 册</button>
+        </form>
+        <div class="auth-footer">已有账号？<a href="login.html">去登录</a></div>
+        <div class="auth-footer" style="margin-top:12px;font-size:12px;color:#6b7d8f;">
+            admin 为内置管理员账号，可直接登录，无需注册
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        if (isLoggedIn()) { location.href = 'index.html'; }
+        function doRegister(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const errorMsg = document.getElementById('errorMsg');
+            const successMsg = document.getElementById('successMsg');
+            errorMsg.style.display = 'none';
+            successMsg.style.display = 'none';
+
+            if (password !== confirmPassword) {
+                errorMsg.textContent = '两次输入的密码不一致';
+                errorMsg.style.display = 'block';
+                return false;
+            }
+            const users = JSON.parse(localStorage.getItem('abyss_users') || '[]');
+            if (users.find(u => u.username === username)) {
+                errorMsg.textContent = '用户名已存在';
+                errorMsg.style.display = 'block';
+                return false;
+            }
+            users.push({ id: Date.now(), username, password, role: 'user' });
+            localStorage.setItem('abyss_users', JSON.stringify(users));
+            successMsg.textContent = '注册成功，正在跳转登录...';
+            successMsg.style.display = 'block';
+            setTimeout(() => { location.href = 'login.html'; }, 1200);
+            return false;
+        }
+    </script>
+</body>
+</html>
