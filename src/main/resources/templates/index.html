@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深渊档案 - 深海生物图鉴</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a th:href="@{/}" class="nav-logo">🌊 深渊档案</a>
+            <ul class="nav-links">
+                <li><a th:href="@{/}">首页</a></li>
+                <li><span class="nav-username">👤 <span th:text="${username}">用户</span></span></li>
+                <li><a th:href="@{/logout}">退出</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- 欢迎横幅 -->
+        <div class="welcome-banner">
+            <h1>探索深海的未知世界</h1>
+            <p>潜入地球最后的边疆，认识那些在极端黑暗、巨大压力中生存的神秘生物。<br>
+               从热泉到海沟，每一种生命都是进化的奇迹。</p>
+        </div>
+
+        <!-- 统计数据 -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-number">8</div>
+                <div class="stat-label">收录物种</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">7000</div>
+                <div class="stat-label">最大深度(米)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">深度带</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" th:text="${role}">user</div>
+                <div class="stat-label">当前角色</div>
+            </div>
+        </div>
+
+        <!-- 深海生物列表 -->
+        <h2 class="page-title">🌟 精选深海生物</h2>
+        <div class="creature-grid">
+            <div class="creature-card">
+                <div class="card-body">
+                    <div class="card-title">大王乌贼</div>
+                    <div class="card-scientific">Architeuthis dux</div>
+                    <div class="card-meta">
+                        <span>🌊 300-1000m</span>
+                        <span>📏 13米</span>
+                    </div>
+                </div>
+            </div>
+            <div class="creature-card">
+                <div class="card-body">
+                    <div class="card-title">桶眼鱼</div>
+                    <div class="card-scientific">Macropinna microstoma</div>
+                    <div class="card-meta">
+                        <span>🌊 600-800m</span>
+                        <span>📏 15厘米</span>
+                    </div>
+                </div>
+            </div>
+            <div class="creature-card">
+                <div class="card-body">
+                    <div class="card-title">水滴鱼</div>
+                    <div class="card-scientific">Psychrolutes marcidus</div>
+                    <div class="card-meta">
+                        <span>🌊 600-1200m</span>
+                        <span>📏 30厘米</span>
+                    </div>
+                </div>
+            </div>
+            <div class="creature-card">
+                <div class="card-body">
+                    <div class="card-title">幽灵蛸</div>
+                    <div class="card-scientific">Vampyroteuthis infernalis</div>
+                    <div class="card-meta">
+                        <span>🌊 600-1200m</span>
+                        <span>📏 30厘米</span>
+                    </div>
+                </div>
+            </div>
+            <div class="creature-card">
+                <div class="card-body">
+                    <div class="card-title">小飞象章鱼</div>
+                    <div class="card-scientific">Grimpoteuthis</div>
+                    <div class="card-meta">
+                        <span>🌊 3000-7000m</span>
+                        <span>📏 20-30厘米</span>
+                    </div>
+                </div>
+            </div>
+            <div class="creature-card">
+                <div class="card-body">
+                    <div class="card-title">深海鮟鱇鱼</div>
+                    <div class="card-scientific">Melanocetus johnsonii</div>
+                    <div class="card-meta">
+                        <span>🌊 1000-4000m</span>
+                        <span>📏 18厘米</span>
+                    </div>
+                </div>
+            </div>
+            <div class="creature-card">
+                <div class="card-body">
+                    <div class="card-title">巨型等足虫</div>
+                    <div class="card-scientific">Bathynomus giganteus</div>
+                    <div class="card-meta">
+                        <span>🌊 170-2140m</span>
+                        <span>📏 36-50厘米</span>
+                    </div>
+                </div>
+            </div>
+            <div class="creature-card">
+                <div class="card-body">
+                    <div class="card-title">皱鳃鲨</div>
+                    <div class="card-scientific">Chlamydoselachus anguineus</div>
+                    <div class="card-meta">
+                        <span>🌊 270-1300m</span>
+                        <span>📏 3-4米</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

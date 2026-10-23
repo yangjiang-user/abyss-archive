@@ -1,0 +1,29 @@
+# 深渊档案 - 应用配置文件
+server:
+  port: 8080  # 服务端口
+
+spring:
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/abyss_archive?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: root  # ⚠️ 请修改为你的MySQL密码
+  # Thymeleaf模板配置
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false  # 开发时关闭缓存，修改页面立即生效
+  # 静态资源配置
+  web:
+    resources:
+      static-locations: classpath:/static/
+
+# MyBatis-Plus配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true  # 下划线转驼峰
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 打印SQL日志
+  global-config:
+    db-config:
+      id-type: auto  # 主键自增

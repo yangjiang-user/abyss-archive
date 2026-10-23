@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册 - 深渊档案</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a th:href="@{/}" class="nav-logo">🌊 深渊档案</a>
+            <ul class="nav-links">
+                <li><a th:href="@{/login}">登录</a></li>
+                <li><a th:href="@{/register}">注册</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <h2>📝 用户注册</h2>
+
+        <!-- 错误提示 -->
+        <div class="error-msg" th:if="${error}" th:text="${error}" style="display:block;"></div>
+
+        <form th:action="@{/register}" method="post">
+            <div class="form-group">
+                <label>用户名</label>
+                <input type="text" name="username" placeholder="3-20个字符" required minlength="3" maxlength="20">
+            </div>
+            <div class="form-group">
+                <label>密码</label>
+                <input type="password" name="password" placeholder="至少6位" required minlength="6">
+            </div>
+            <div class="form-group">
+                <label>确认密码</label>
+                <input type="password" name="confirmPassword" placeholder="再次输入密码" required minlength="6">
+            </div>
+            <button type="submit" class="btn-primary">注 册</button>
+        </form>
+
+        <div class="auth-footer">
+            已有账号？<a th:href="@{/login}">去登录</a>
+        </div>
+        <div class="auth-footer" style="margin-top:12px;font-size:12px;color:#6b7d8f;">
+            admin 为内置管理员账号，可直接登录，无需注册
+        </div>
+    </div>
+</body>
+</html>
